@@ -3,6 +3,8 @@
 ## Bloccit: a Reddit replica to teach the fundamentals of web development and Rails.
 
 Made with my mentor at [Bloc](http://bloc.io).
+View project here ---> https://git.heroku.com/jax-bloccit.git
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
