@@ -2,13 +2,8 @@
 
 ## Bloccit: a Reddit replica to teach the fundamentals of web development and Rails.
 
-Made with my mentor at [Bloc](http://bloc.io).
+Made with my mentor Matt at [Bloc](http://bloc.io).
 View project here ---> jax-bloccit.herokuapp.com
-
-
-Deployed to heroku, find out more here --> jax-bloccit.herokuapp.com
-
-Deployed to heroku, find out more here --> jax-bloccit.herokuapp.com
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
