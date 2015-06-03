@@ -24,6 +24,22 @@ end
 # Create unique comment if does not already exist
 Comment.where(post: "Jax Unique Seed Post", body: "Jax Unique Seed Body Data").first_or_create!
 
+#Create Random Questions
+5.times do
+  Question.create!(
+    title: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraph
+  )
+end
+
+# Create unique question if does not already exist
+Question.where(title: "Jax Unique Question", body: "Jax Unique Question body text").first_or_create!
+
+questions = Question.all
+
 puts "Seed finished"
 puts "#{Post.count} post created"
 puts "#{Comment.count} comments created"
+puts "#{Question.count} questions created"
+
+

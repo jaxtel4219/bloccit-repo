@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+
   def index
     @questions = Question.all
   end
@@ -34,6 +35,18 @@ class QuestionsController < ApplicationController
     else
       flash[:error] = "There was an error saving the question. Please try again."
       render :edit
+    end
+  end
+  
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    if @question.destroy
+      flash[:notice] = "Question was deleted."
+      redirect_to @question
+    else
+      flash[:error] = "There was an error deleting the question. Please try again."
+      render :destroy
     end
   end
 end
