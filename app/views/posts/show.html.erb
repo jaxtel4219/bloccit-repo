@@ -1,2 +1,4 @@
+<%= link_to "Edit", edit_post_path(@post), class: 'btn btn-success' %>
+<%= button_to "Delete", post_path(@post), class: 'btn btn-danger', method: "delete", data: { confirm: 'Are you wheelwe - wheelwe sure?', disable_with: 'loading...' } %>
 <h1><%= @post.title %></h1>
 <p><%= @post.body %></p>
