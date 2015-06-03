@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get "welcome/index"
 
-  get "welcome/about"
+  resources :posts, :advertisements
   
-  get "welcome/contact"
+  get 'about' => 'welcome#about' #so we don't have to type welcome/about, jsut /about
+  get 'contact' => 'welcome#contact'
 
   root to: 'welcome#index'  
 end
