@@ -32,6 +32,9 @@ gem 'faker'
 # Use gem Devise for Authentication
 gem 'devise'
 
+# Use gem Pundit for access rights
+gem 'pundit'
+
 # handle sensiteve data like passwords and users names with environment variables
 gem 'figaro', '1.0'
 
