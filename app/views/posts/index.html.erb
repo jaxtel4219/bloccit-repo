@@ -1,4 +1,4 @@
-<h1>Posts</h1>
+<h1>Posts</h1>      
 <% if policy(Post.new).create? %>
   <%= link_to "New Post", new_post_path, class: 'btn btn-success' %>
 <% end %>

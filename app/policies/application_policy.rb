@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    update?
+    user.admin || user.moderator
   end
 
   def scope
@@ -49,5 +49,7 @@ class ApplicationPolicy
     def resolve
       scope
     end
+    
   end
+  
 end
