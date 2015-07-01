@@ -7,8 +7,7 @@ class PostPolicy < ApplicationPolicy
         user.guest?
         scope.where(user_id: @user)
       else
-        #redirect_to root_url,
-        alert: "Access Denied" 
+        redirect_to root_url, alert: "Access Denied" 
       end
     end
   end    
@@ -16,6 +15,7 @@ class PostPolicy < ApplicationPolicy
   def index?
     user.admin? || user.moderator? || user.guest?
   end
+ 
   
   def destroy?
     @user.admin? || @user.moderator?
