@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!  
-  def index
-    #@posts = Post.all
-    @posts = policy_scope(Post)
-    #authorize @posts
-  end
+  #def index
+    #@posts = policy_scope(Post)
+    ##@posts = Post.all
+    ##authorize @posts
+  #end
 
   def show
     @post = Post.find(params[:id])

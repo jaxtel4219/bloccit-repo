@@ -17,12 +17,12 @@ class User < ActiveRecord::Base
     role == 'member'
   end
  
-  def guest?
-    role == 'guest'
-  end
+  #def guest?
+  #  role == 'guest'
+  #end
   
-  def user_nil?
-    name.length = 0
-  end
+  #def user_nil?
+  #  name.length = 0
+  #end
   
 end
