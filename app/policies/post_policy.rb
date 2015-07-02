@@ -3,22 +3,16 @@ class PostPolicy < ApplicationPolicy
     def resolve
       if user.admin? || user.moderator?
         scope.all
-      elsif
-        user.guest?
+      elsif user.present?
         scope.where(user_id: @user)
       else
         redirect_to root_url, alert: "Access Denied" 
       end
     end
   end    
-    
-  def index?
-    user.admin? || user.moderator? || user.guest?
-  end
- 
   
-  def destroy?
-    @user.admin? || @user.moderator?
+  def index?
+    user.admin? || user.moderator? || user.member?
   end
   
  end #Class PostPolicy
