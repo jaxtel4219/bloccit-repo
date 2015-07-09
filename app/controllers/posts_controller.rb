@@ -1,18 +1,24 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!  
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    @posts = policy_scope(Post)
+    #authorize @posts
   end
 
   def show
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def new
     @post = Post.new
+    authorize @post
   end
   
   def create
-    @post = Post.new(params.require(:post).permit(:title, :body))
+    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
+    authorize @post
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to @post
@@ -24,10 +30,12 @@ class PostsController < ApplicationController
     
   def edit
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def update
     @post = Post.find(params[:id])
+    authorize @post
     if @post.update_attributes(params.require(:post).permit(:title, :body))
       flash[:notice] = "Post was updated."
       redirect_to @post
@@ -38,6 +46,8 @@ class PostsController < ApplicationController
   end
   
   def destroy
+    @post = Post.find(params[:id])
+    authorize @post
     @post = Post.find(params[:id])
     @post.destroy
     if @post.destroy

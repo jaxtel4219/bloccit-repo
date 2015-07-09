@@ -33,6 +33,12 @@ gem 'faker'
 # Use gem Devise for Authentication
 gem 'devise'
 
+# Use gem Pundit for access rights
+gem 'pundit'
+
+# handle sensiteve data like passwords and users names with environment variables
+gem 'figaro', '1.0'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
