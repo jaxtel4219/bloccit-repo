@@ -11,6 +11,35 @@ require 'faker'
   user.save!
 end
 
+# Create an admin user
+admin = User.new(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+  )
+admin.skip_confirmation!
+admin.save!
+
+# Create a moderator
+moderator = User.new(
+  name:     'Moderator User',
+  email:    'moderator@example.com',
+  password: 'helloworld',
+  role:     'moderator'
+  )
+moderator.skip_confirmation!
+moderator.save!
+
+# Create a member
+member = User.new(
+  name:     'Member User',
+  email:    'member@example.com',
+  password: 'helloworld'
+  )
+member.skip_confirmation!
+member.save!
+
 users = User.all
 # Note: by calling `User.new` instead of `create`,
 # we create an instance of User which isn't immediately saved to the database.
@@ -21,10 +50,20 @@ users = User.all
 # The `save` method then saves this User to the database.
 
 
+# Create Topics
+15.times do
+  Topic.create!(
+    name:         Faker::Lorem.sentence,
+    description:  Faker::Lorem.paragraph
+    )
+end
+topics = Topic.all
+
 #Create Random Posts
-50.times do
+10.times do
   Post.create!(
     user: users.sample,
+    topic: topics.sample,
     title: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraph
   )
@@ -36,7 +75,7 @@ end
 posts = Post.all
 
 #Create Comments
-100.times do 
+20.times do 
   Comment.create!(
     # user: users.sample,   # we have not yet associated Users with Comments
     post: posts.sample,
@@ -60,16 +99,9 @@ Question.where(title: "Jax Unique Question", body: "Jax Unique Question body tex
 
 questions = Question.all
 
-user = User.first
-user.skip_reconfirmation!
-user.update_attributes!(
-  name: 'Jax',
-  email: 'jaxtel4219@gmail.com',
-  password: 'jack2000'
-  )
-
 puts "Seed finished"
 puts "#{User.count} users created"
-puts "#{Post.count} post created"
+puts "#{Post.count} posts created"
+puts "#{Topic.count} topics created"
 puts "#{Comment.count} comments created"
 puts "#{Question.count} questions created"

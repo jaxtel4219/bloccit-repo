@@ -1,11 +1,13 @@
 <br>
-<% if policy(@post).edit? %>
-  <%= link_to "Edit", edit_post_path(@post), class: 'btn btn-success' %>
-<% end %>
-
-<% if policy(@post).destroy? %>
-  <%= button_to "Delete", post_path(@post), class: 'btn btn-danger', method: "delete", data: { confirm: 'Are you wheelwe - wheelwe sure?', disable_with: 'loading...' } %>
-<% end %>
-
 <h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
+
+<div class="row">
+  <div class="col-md-8">
+    <p><%= @post.body %></p>
+  </div>
+  <div class="col-md-4">
+    <% if policy(@post).edit? %>
+      <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

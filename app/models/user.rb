@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
   def member?
     role == 'member'
   end  
+
 end
