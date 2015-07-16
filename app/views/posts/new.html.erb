@@ -4,25 +4,13 @@
   <div class="col-md-4">
     <p>Guidelines for posts</p>
     <ul>
-      <li>Make sure it rhymes.</li>
-      <li>Don't use the letter "A".</li>
-      <li>The incessant use of hashtags will get you banned.</li>
+      <li>Must have at least 5 characters in the title.</li>
+      <li>Must have at least 20 characters in the body.</li>
+      <li>Must have an associated topic and user.</li>
     </ul>
   </div>
   <div class="col-md-8">
-    <%= form_for [@topic, @post] do |f| %>
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :body %>
-      <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Save", class: 'btn btn-success' %>
-    </div>
-    <% end %>
+     <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
   </div>
 </div>
 
