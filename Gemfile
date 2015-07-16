@@ -23,22 +23,18 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
 # Use gem Faker to create seed data
 gem 'faker'
-
 # Use gem Devise for Authentication
 gem 'devise'
-
 # Use gem Pundit for access rights
 gem 'pundit'
-
 # handle sensiteve data like passwords and users names with environment variables
 gem 'figaro', '1.0'
-
+# Use redcarpet for markdown. Learn more at https://github.com/vmg/redcarpet
+gem 'redcarpet'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
