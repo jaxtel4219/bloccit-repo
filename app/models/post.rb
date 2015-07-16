@@ -14,4 +14,5 @@ class Post < ActiveRecord::Base
   validates :topic, presence: true
   validates :user, presence: true
   
+  
 end
