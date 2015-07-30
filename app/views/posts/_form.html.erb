@@ -1,14 +1,16 @@
 <%= form_for [topic, post] do |f| %>
 <% post.title %>
-<% if post.image? %>
+
     <div class="form-group">
+      <%= f.label :image%>
       <p>
         <%= image_tag( post.image.profile.url ) %>
         <%= f.file_field :image %>
         <%= f.hidden_field :image_cache %>
+        
       </p>
     </div>
-<% end %>
+
 
 
 <% if post.errors.any? %>
