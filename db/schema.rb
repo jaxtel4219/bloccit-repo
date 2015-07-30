@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728150720) do
+ActiveRecord::Schema.define(version: 20150729181904) do
 
   create_table "advertisements", force: true do |t|
     t.string   "title"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150728150720) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.string   "image"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
