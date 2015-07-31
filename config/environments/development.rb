@@ -5,6 +5,12 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  
+  # The Better Errors gem transforms your in-browser error page, adding an explorable stack trace and in-browser
+  # console with access to the variables where the error was thrown. This let's you "poke around"
+  # the area where you're running into an error, and quickly explore all the variables available at
+  # that point in your application.
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
 
   # Do not eager load code on boot.
   config.eager_load = false
