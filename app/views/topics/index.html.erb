@@ -10,10 +10,13 @@
           </h4>
           <small>
             <%= topic.description %>
+            <br>
+            <i><%= topic.posts.count %> Posts</i>
           </small>
         </div>
       </div>
     <% end %>
+    <%= will_paginate @topics %>
   </div>
   <div class="col-md-4">
     <% if policy(Topic.new).create? %>

@@ -51,6 +51,8 @@ gem 'mini_magick'
 
 gem 'fog'
 
+gem 'will_paginate'
+
 # Use Pry as alternative to irb shell
 #gem 'pry-rails', :group => :development
 

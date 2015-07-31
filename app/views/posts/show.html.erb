@@ -1,8 +1,8 @@
 <br>
-<h1><% @post.markdown_title %>
-  <%= image_tag(@post.image.profile.url) if @post.image? %>
+<h1>
+<%= @post.markdown_title %>
 </h1>
-
+<%= image_tag(@post.image.profile.url) if @post.image? %>
 <div class="row">
   <div class="col-md-8">
     <small>
