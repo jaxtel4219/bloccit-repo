@@ -32,13 +32,13 @@ moderator.skip_confirmation!
 moderator.save!
 
 # Create a member
-member = User.new(
+moderator = User.new(
   name:     'Member User',
   email:    'member@example.com',
-  password: 'helloworld'
+  password: 'helloworld',
   )
-member.skip_confirmation!
-member.save!
+moderator.skip_confirmation!
+moderator.save!
 
 users = User.all
 # Note: by calling `User.new` instead of `create`,
@@ -60,7 +60,7 @@ end
 topics = Topic.all
 
 #Create Random Posts
-1000.times do
+500.times do
   Post.create!(
     user: users.sample,
     topic: topics.sample,
@@ -69,22 +69,18 @@ topics = Topic.all
   )
 end
 
-# Create unique post if does not already exist
-#Post.where(user: "Jax", title: "Jax Unique Seed Title", body: "Jax Unique Seed Body Data").first_or_create!
-
 posts = Post.all
 
 #Create Comments
-200.times do 
+2000.times do 
   Comment.create!(
-    # user: users.sample,   # we have not yet associated Users with Comments
+    user: users.sample,
     post: posts.sample,
     body: Faker::Lorem.paragraph
   )
 end
 
-# Create unique comment if does not already exist
-Comment.where(post: "Jax Unique Seed Post", body: "Jax Unique Seed Body Data").first_or_create!
+comments = Comment.all
 
 #Create Random Questions
 5.times do
@@ -93,9 +89,6 @@ Comment.where(post: "Jax Unique Seed Post", body: "Jax Unique Seed Body Data").f
     body: Faker::Lorem.paragraph
   )
 end
-
-# Create unique question if does not already exist
-Question.where(title: "Jax Unique Question", body: "Jax Unique Question body text").first_or_create!
 
 questions = Question.all
 
