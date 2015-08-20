@@ -10,7 +10,7 @@ class PostPolicy < ApplicationPolicy
   end    
   
   def index?
-    user.admin? || user.moderator? || user.member?
+    user.admin? || user.moderator? || user.present?
   end
   
  end #Class PostPolicy
