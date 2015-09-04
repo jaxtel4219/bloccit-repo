@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to [@topic, @post], notice: "Comment saved successfully."
+      redirect_to [@topic], notice: "Comment saved successfully."
     else
       redirect_to [@topic, @post], notice: "Comment failed to save."
     end
