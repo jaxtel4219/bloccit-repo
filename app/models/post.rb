@@ -18,6 +18,8 @@ class Post < ActiveRecord::Base
   #validates :topic, presence: true
   #validates :user, presence: true
   
+  after_create :create_vote  
+  
   #>Voting
   def up_votes
     votes.where(value: 1).count
@@ -55,5 +57,9 @@ class Post < ActiveRecord::Base
     redcarpet = Redcarpet::Markdown.new(renderer, extensions)
     (redcarpet.render markdown).html_safe
   end  
+  
+  def create_vote
+    user.votes.create(value: 1, post: self)
+  end
   
 end
