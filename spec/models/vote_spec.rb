@@ -12,7 +12,6 @@ describe Vote do
         expect(@vote_up.valid?).to eq(true)
         expect(@vote_dn.valid?).to eq(true)
         expect(@vote_saywhat.valid?).to eq(false)
-        #? do we really need a negative to test, if only two values are valid. Do all others fail by default?
       end
     end
   end
