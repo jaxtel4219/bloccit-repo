@@ -15,10 +15,9 @@ class Post < ActiveRecord::Base
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
   #commented out below for rspec voting tests
-  #validates :topic, presence: true
-  #validates :user, presence: true
-  
-  after_create :create_vote  
+  validates :topic, presence: true
+  validates :user, presence: true
+
   
   #>Voting
   def up_votes
@@ -49,6 +48,17 @@ class Post < ActiveRecord::Base
     render_as_markdown(body)
   end  
   
+  #def create_vote
+  #  user.votes.create(value: 1, post: self)
+  #end  
+  
+  def save_with_initial_vote
+    ActiveRecord::Base.transaction do
+      @post = self
+      user.votes.create(value: 1, post: @post)
+    end
+  end  
+  
   private
   
   def render_as_markdown(markdown)
@@ -58,8 +68,5 @@ class Post < ActiveRecord::Base
     (redcarpet.render markdown).html_safe
   end  
   
-  def create_vote
-    user.votes.create(value: 1, post: self)
-  end
-  
+ 
 end
