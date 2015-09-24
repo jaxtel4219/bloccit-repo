@@ -9,6 +9,10 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = @post.comments.build
+    authorize @post
+
   end
 
   def new
@@ -52,24 +56,25 @@ class PostsController < ApplicationController
       render :new
     end
   end
-    def destroy
+  
+  def destroy
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize @post
-    @post.destroy
+
     if @post.destroy
-      flash[:notice] = "post was deleted."
+      flash[:notice] = "\"#{@post.title}\" was deleted successfully."
       redirect_to @topic
     else
-      flash[:error] = "There was an error deleting the post. Please try again."
-      render :destroy
+      flash[:error] = "There was an error deleting the post."
+      render :show
     end
   end
 
   private    
 
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    params.require(:post).permit(:title, :body, :image, :id)
   end
  
 

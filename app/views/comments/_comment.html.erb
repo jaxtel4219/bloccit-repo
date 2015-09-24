@@ -1,0 +1,14 @@
+<p>
+  <% if comment.user %>
+    <small>
+      <%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
+      submitted <%= time_ago_in_words(comment.created_at) %> ago by
+      <em><%= comment.user.name || comment.user.email %></em>
+      <% if policy(comment).destroy? %>
+        <%= link_to "Delete", [@post, comment], method: :delete %>
+      <% end %>
+    </small>
+    <br>
+    <%= comment.body %>
+  <% end %>
+</p>
